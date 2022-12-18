@@ -1,0 +1,18 @@
+quarkus:
+  application:
+    name: Wunderly-BE
+  hibernate-orm:
+    sql-load-script: import.sql
+  log:
+    level: INFO
+  http:
+    cors:
+      ~: true
+      origins: http://localhost:4200
+      methods: OPTIONS, GET, POST, DELETE, HEAD
+      headers: accept, authorization, content-type, x-requested-with
+
+wunderly:
+  base-url: http://localhost:8080/
+  fe-url: http://localhost:4200/
+  key-length: 10

@@ -1,0 +1,35 @@
+
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Wunderly URL Shortner</h1>
+    <form (ngSubmit)="onSubmit()" #linkForm="ngForm">
+      <div class="form-group">
+        <label for="url">URL</label>
+        <input type="text" class="form-control" id="url"
+               required
+               [(ngModel)]="model.url" name="url"
+               #url="ngModel">
+        <div [hidden]="url.valid || url.pristine"
+             class="alert alert-danger">
+          URL is required
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!linkForm.form.valid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="linkForm.reset()">Clear Url</button>
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h1>The Created Link : </h1>
+    <div class="row">
+      <div class="col-xs-1"></div>
+      <label>Short url: <a href="{{model.shortUrl}}">{{ model.shortUrl }} </a></label>
+    </div>
+    <div class="row">
+      <div class="col-xs-1"></div>
+      <label>Stats url: <a href="{{model.statsUrl}}">{{ model.statsUrl }} </a></label>
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary" (click)="submitted=false">Create new link</button>
+  </div>
+</div>
