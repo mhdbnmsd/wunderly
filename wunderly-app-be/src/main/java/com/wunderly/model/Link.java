@@ -22,9 +22,10 @@ public class Link implements Serializable {
     @OneToMany(mappedBy = "link", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Visit> visits = new HashSet<>();
 
-    public static Link of(String link, String shortLink) {
-        return new Link(link, shortLink);
+    public static Link of(String url, String urlKey) {
+        return new Link(url, urlKey);
     }
+
 
     private Link(String url, String urlKey) {
         this.url = url;
